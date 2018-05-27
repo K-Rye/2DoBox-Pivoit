@@ -3,25 +3,26 @@ var body = $('#body-input').val();
 var numCards = 0;
 var qualityVariable = "swill";
 
-var newCard = function(id , title , body , quality) {
-    return '<div id="' + id + '"class="card-container"><h2 class="title-of-card">'  
-            + title +  '</h2>'
-            + '<button class="delete-button"></button>'
-            +'<p class="body-of-card">'
-            + body + '</p>'
-            + '<button class="upvote"></button>' 
-            + '<button class="downvote"></button>' 
-            + '<p class="quality">' + 'quality:' + '<span class="qualityVariable">' + quality + '</span>' + '</p>'
-            + '<hr>' 
-            + '</div>';
+function creatNewCard(id , title , body , quality) {
+    var newCard =
+        `<div id=${id} class="card-container">
+            <h2 class="title-of-card" contenteditable="true">${title}</h2>
+            <button class="delete-button"></button>
+            <p class="body-of-card" contenteditable="true">${body}</p>
+            <button class="upvote"></button> 
+            <button class="downvote"></button> 
+            <p class="quality"> quality: 
+            <span class="qualityVariable">${quality}</span> 
+            </p>
+            <hr> 
+        </div>`
 };
 
+
 function cardObject() {
-    return {
-        title: $('#title-input').val(),
-        body: $('#body-input').val(),
-        quality: qualityVariable
-    };
+    this.title= $('#title-input');
+    this.body= $('#body-input');
+    this.quality= qualityVariable;
 }
 
 $.each(localStorage, function(key) {
@@ -41,8 +42,8 @@ $('.save-btn').on('click', function(event) {
        return false;
     };  
 
-    numCards++;
-    $( ".bottom-box" ).prepend(newCard('card' + numCards, $('#title-input').val(), $('#body-input').val(), qualityVariable)); 
+    // numCards++;
+    $( ".bottom-box" ).prepend(newCard = ('card' + numCards, $('#title-input').val(), $('#body-input').val(), qualityVariable)); 
     localStoreCard();
     $('form')[0].reset();
 });
