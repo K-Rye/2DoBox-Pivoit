@@ -52,7 +52,7 @@ $(".bottom-box").on('click', function(event){
     var currentQuality = $($(event.target).siblings('p.quality').children()[0]).text().trim();
     var qualityVariable;
 
-    if (event.target.className === "upvote" || event.target.className === "downvote"){
+    // if (event.target.className === "upvote" || event.target.className === "downvote"){
 
         if (event.target.className === "upvote" && currentQuality === "plausible"){
             qualityVariable = "genius";
@@ -86,7 +86,7 @@ $(".bottom-box").on('click', function(event){
 
     var newCardJSON = JSON.stringify(cardObjectInJS);
     localStorage.setItem(cardHTMLId, newCardJSON);
-    }
+    });
    
     else if (event.target.className === "delete-button") {
         var cardHTML = $(event.target).closest('.card-container').remove();
@@ -95,11 +95,6 @@ $(".bottom-box").on('click', function(event){
     }
 });
       
-
-
-
-
-
 
 
 
