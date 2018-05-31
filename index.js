@@ -1,12 +1,10 @@
 
-//event listeners
+
 $('.save-btn').on('click', createCard);
-
 $('.bottom-box').on('click', '.upvote', increaseQuality);
+$('.bottom-box').on('click', '.downvote', decreaseQuality);
 
-// $(".downvote").on('click', increaseQuality() );
 
-//functions
 function Card(title, body) {
     this.title = title;
     this.body = body;
@@ -44,17 +42,30 @@ function prependCard(card) {
 function increaseQuality(event) {
     var currentQuality = $(this).closest('p')
     console.log(currentQuality);
-    // if (currentQuality.text() === "none") {
-    //     currentQuality.text("low") 
-    // } else if  (currentQuality.text() === "low") {
-    //     currentQuality.text("normal") 
-    // } else if (currentQuality.text() === "normal") {
-    //     currentQuality.text("high" )
-    // } else if (currentQuality.text() === "high") {
-    //     currentQuality.text("critical")
-    // }
+    if (currentQuality.text() === "none") {
+        currentQuality.text("low") 
+    } else if  (currentQuality.text() === "low") {
+        currentQuality.text("normal") 
+    } else if (currentQuality.text() === "normal") {
+        currentQuality.text("high" )
+    } else if (currentQuality.text() === "high") {
+        currentQuality.text("critical")
+    }
 }
 
+function decreaseQuality(event) {
+    var currentQuality = $(this).closest('p')
+    console.log(currentQuality);
+    if (currentQuality.text() === "critical") {
+        currentQuality.text("high") 
+    } else if  (currentQuality.text() === "high") {
+        currentQuality.text("normal") 
+    } else if (currentQuality.text() === "normal") {
+        currentQuality.text("low" )
+    } else if (currentQuality.text() === "low") {
+        currentQuality.text("none")
+    }
+}
 
 // ('.card-container').find('.qualityVariable')
 
@@ -89,31 +100,7 @@ function increaseQuality(event) {
 
 // })
 
-//     if (event.target.className === "upvote" || event.target.className === "downvote"){
 
-//         if (event.target.className === "upvote" && currentQuality === "plausible"){
-//             qualityVariable = "genius";
-//             $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
-               
-//         } else if (event.target.className === "upvote" && currentQuality === "swill") {
-//             qualityVariable = "plausible";
-//             $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
-               
-//         } else if (event.target.className === "downvote" && currentQuality === "plausible") {
-//             qualityVariable = "swill"
-//             $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
-
-//         } else if (event.target.className === "downvote" && currentQuality === "genius") {
-//             qualityVariable = "plausible"
-//             $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
-
-//         } else if (event.target.className === "downvote" && currentQuality === "swill") {
-//             qualityVariable = "swill";
-        
-//         } else if (event.target.className === "upvote" && currentQuality === "genius") {
-//             qualityVariable = "genius";
-//         }
-//     }
 
 //     var cardHTML = $(event.target).closest('.card-container');
 //     var cardHTMLId = cardHTML[0].id;
